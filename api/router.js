@@ -3,7 +3,7 @@
  *********/
 const express = require('express'),
       router = express.Router(),
-      upload  = require('./config/multer')
+      upload  = require('./config/multer')   // image
 
 /* Import Controller
  *******************/
@@ -15,14 +15,10 @@ const   HomePage = require('./controllers/pages/HomePage'),
  *************/
 
 //  Controller Homepage
-
-
 router.route('/')
     .get(HomePage.getArticle)
 
 // ******************* CRUD Article*********************
-
-
 router.route('/Article')
     .get(ArticleCrud.getArticle)
     .post(upload.single('image'), ArticleCrud.createArticle)
@@ -31,7 +27,7 @@ router.route('/Article')
 
 router.route('/Article/:id')
     .delete(ArticleCrud.deleteOneArticle)
-    .put(ArticleCrud.updateArticle)
+    .put(upload.single('image'), ArticleCrud.updateArticle)
 
 
 

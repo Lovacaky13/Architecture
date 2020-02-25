@@ -67,7 +67,7 @@
 
             </div>
             <div class="col-md-6">
-              <form action="/Article/{{_id}}/?_method=DELETE" method="post">
+              <form action="/Article/{{_id}}/?_method=DELETE" method="post" >
                 <button type="submit" class="btn btn-danger">Delete</button>
               </form>
             </div>
@@ -80,11 +80,18 @@
               <div class="modal-content">
                 <div class="modal-header">
 
-                  <form action="/Article/{{_id}}?_method=PUT" method="post">
+                  <form action="/Article/{{_id}}?_method=PUT" method="post" enctype="multipart/form-data" >
                     <div class="modal-body">
+
                       <label for="formGroupExampleInput">Titre : </label>
                       <input type="text" class="form-control" name='title' id="formGroupExampleInput"
                         value="{{this.title}}">
+
+                      <div class="form-group">
+                        <label>Cover</label>
+                        <input type="file" class="form-control" name='image'>
+                      </div>
+
                       <div class="modal-footer">
                         <div class="row">
                           <div class="col-md-6">
