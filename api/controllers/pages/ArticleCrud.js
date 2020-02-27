@@ -1,8 +1,20 @@
+
+ // 
+/**
+ * CRUD article
+ * 
+ */
+
+
+
+
+
 const Article = require("../../db/models/Article"),
     path = require('path'),
     fs = require('fs')
 
 module.exports = {
+
 
     getArticle: async (req, res) => {
         const dbArticle = await Article.find({}) // Transforme ton Model (consctructeur) en Json
@@ -20,10 +32,10 @@ module.exports = {
             res.redirect('/')
 
         } else if (req.file) {
-            Article.create({
+            Article.create({                                  
                 title: req.body.title,
-                image: `/assets/images/${req.file.originalname}`,
-                name: req.file.originalname,
+                image: `/assets/images/${req.file.filename}`,
+                name: req.file.filename,
                 createDate: Date.now()
 
             })
@@ -34,48 +46,22 @@ module.exports = {
 
         }
     },
-
-    // updateArticle: async (req, res) => {
-    //     const dbArticle = await Article.findById(req.params.id),
-    //           query = { _id: req.params.id }
-    //           //pathImg = path.resolve("public/images/" + dbArticle.name)
-
-    //     console.log(req.file);
-
-    //     if (!req.file) {
-    //         console.log('pas de req.file')
-    //         res.redirect('/')
-
-    //     } else if (req.file) {
-    //         Article.findByIdAndUpdate(query, {
-    //             title: req.body.title,
-    //             image: `/assets/images/${req.file.originalname}`,
-    //             name: req.file.originalname,
-    //             createDate: Date.now()
-    //         })
-    //     }
-    //     // } else if (err) console.log(err)
-
-    //     //         else res.render('/')
-
-    //     },
-
-
+ 
+   
     updateArticle: async (req, res) => {
-        const dbArticle = await Article.findById(req.params.id),
-            query = {
-                _id: req.params.id
-            }
-        pathImg = path.resolve("public/images/" + dbArticle.name)
+       const dbArticle = await Article.findById(req.params.id),
+             query = { _id: req.params.id }
+             pathImg = path.resolve("public/images/" + dbArticle.name)
 
-        console.log(req.file)
+            console.log(dbArticle.name)
+            console.log(req.file)
 
         if (!req.file) {
             if (req.body.title) {
                 console.log('edit title (no file)')
                 console.log(dbArticle)
 
-                Article.updateOne(query, {
+                Article.updateOne(query, {                   
                         title: req.body.title
                     },
                     (err) => {
@@ -85,19 +71,20 @@ module.exports = {
             } else {
                 res.redirect('/')
             }
-        } else {
-            Article.updateOne(query, {
+        } else { 
+            Article.updateOne(query, {                      
                     ...req.body,
-                    imgArticle: `/assets/images/${req.file.originalname}`,
-                    name: req.file.originalname
-                },
-                (error, post) => {
+                    image: `/assets/images/${req.file.filename}`,
+                    name: req.file.filename
+                    },
+ 
+                (error, post) => { 
                     fs.unlink(pathImg,
                         (err) => {
                             if (err) {
                                 console.log(err)
                             } else {
-                                console.log('File edited.')
+                                console.log('File Deleted.')
                                 res.redirect('/')
                             }
                         })
@@ -105,13 +92,10 @@ module.exports = {
         }
     },
 
-
     deleteOneArticle: async (req, res) => {
-        const dbArticle = await Article.findById(req.params.id),
-            query = {
-                _id: req.params.id
-            },
-            pathImg = path.resolve("public/images/" + dbArticle.name)
+        const   dbArticle = await Article.findById(req.params.id),
+                query = { _id: req.params.id },
+                pathImg = path.resolve("public/images/" + dbArticle.name)
 
         console.log(dbArticle);
         console.log(query);

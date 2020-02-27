@@ -28,7 +28,9 @@ mongoose.connect(db, {
 app.set('view engine', 'hbs');
 app.engine('hbs', hbs({
     extname: 'hbs',
-    defaultLayout: 'main'
+    defaultLayout: 'main',
+    layoutsDir: __dirname + '/views/layouts/',
+    partialsDir: __dirname + '/views/partials/'
 }));
 
 
