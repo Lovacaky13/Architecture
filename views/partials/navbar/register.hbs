@@ -17,7 +17,7 @@
                     <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active bg-lolo " id="home-tab" data-toggle="tab" href="#home" role="tab"
-                                aria-controls="home" aria-selected="true">S'identifier</a>
+                                aria-controls="home" aria-selected="true">S'inscrire</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
@@ -36,7 +36,15 @@
                             <div class="register-heading   ">
                                 <h3>Créé un compte Utilisateur</h3>
 
-                                <div class="list-group">
+                                <div class="content">
+                                    <ol type="1">
+                                        {{#each errors}}
+                                        <li>{{this}}</li>
+                                        {{/each}}
+                                    </ol>
+                                </div>
+
+                                {{!-- <div class="list-group">
                                     {{#if error }}
                                     <a class="list-group-item list-group-item-danger error">Erreur : Mot de passe ou
                                         information érroné</a>
@@ -45,10 +53,10 @@
                                     <a class="list-group-item list-group-item-success error">Success ! Vous êtes en
                                         attentes d'être confirmer par un admin</a>
                                     {{/if}}
-                                </div>
+                                </div> --}}
                             </div>
 
-                            <form action="/login/register" method="POST" enctype="multipart/form-data">
+                            <form action="/User" method="post" enctype="multipart/form-data">
                                 <div class="row register-form " style="width: 100%">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -63,7 +71,7 @@
                                         </div>
                                     </div>
                                 </div>
-
+{{!-- 
                                 <div class="row register-form " style="width: 100%">
                                     <div class="col-md-12">
                                         <div class="form-group">
@@ -99,7 +107,6 @@
                                     </div>
                                 </div>
 
-
                                 <div class="row register-form " style="width: 100%">
                                     <div class="col-md-12">
                                         <div class="form-group">
@@ -114,7 +121,7 @@
                                     <label>Confirmer votre mot de passe :</label>
                                     <input type="password" class="form-control" name="password2"
                                         placeholder="Confirm Password *" value="">
-                                </div>
+                                </div> --}}
                                 <input type="submit" class="btn btn-primary" value="S'inscrire" />
                             </form>
                         </div>
@@ -126,8 +133,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Email :</label>
-                                            <input type="email" name="email" class="form-control" placeholder="Email"
-                                                required />
+                                            <input type="email" name="email" class="form-control" placeholder="Email" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -165,7 +171,6 @@
 
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

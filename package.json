@@ -22,7 +22,9 @@
   },
   "homepage": "https://github.com/Arinfo-Dev-Allonnes/trot-go#readme",
   "dependencies": {
+    "bcrypt": "^4.0.0",
     "bootstrap": "^4.4.1",
+    "connect-flash": "^0.1.1",
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
     "handlebars.moment": "^1.0.4",

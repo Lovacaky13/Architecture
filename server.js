@@ -7,6 +7,7 @@ const
     methodOverride = require('method-override'),
     router = express.Router(),
     mongoose = require('mongoose'),
+    // connectFlash = require('connect-flash'), //customize le message d'erreur
     //keys = require('./config/keys'),
     port = 3000;
     
@@ -38,7 +39,8 @@ app.engine('hbs', hbs({
 var MomentHandler = require("handlebars.moment");
 MomentHandler.registerHelpers(Handlebars);
 
-
+// Connect-Flash (req.flash)
+// app.use(connectFlash())
 
 //app.use
 app.use('/assets', express.static('public'))
@@ -47,7 +49,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
    extended: false
 }));
-
 
 
 const Router = require('./api/router')

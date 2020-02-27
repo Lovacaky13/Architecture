@@ -1,35 +1,43 @@
  // 
-/**
- * Controller d'enregistrement des utilisateurs
- * 
- */
+ /**
+  * Controller d'enregistrement des utilisateurs
+  * 
+  */
+ const User = require('../db/models/User'),
+       path = require('path'),
+       fs = require('fs')
 
-const   User = require('../../db/models/User'),
-        path = require('path');
+ module.exports = {
+     userCreate: (req, res) => {
+         const coucou = 'coucou'
 
-module.exports = {
+         console.log('test register user')
 
-    
-    post: (req, res) => {
+         console.log(req.body)
 
-        User.create({
+         res.json({
+            cc: coucou
+         })
 
-            lastname: req.body.lastname,
-            firstname: req.body.firstname,
-            adress1: req.body. adress1,
-            zip:req.body.zip,
-            city:req.body.city,
-            email:req.body.email,
-            password: req.body.password,
-            status:'user',
-            isAdmin: false,
-            isBan:false,
-            isVerified:false,
-       
-        }, (error, user) => { 
 
-            res.redirect('/')
-        })
+         //  User.create(
 
-    }
-}
+         //      ...req.body, (error, User) => {
+
+         //          if (error) { //si erreur de type pas de nom, ou mot de passe...
+
+         //              const registerError = Object.keys(error.errors).map(key => error.errors[key].message);
+
+         //              req.flash('registerError', registerError)
+         //              req.flash('data', req.body) //recupere les données saisies par l'utilisateur
+
+         //              return res.redirect('index', {
+         //                 success: req.flash('success')
+         //              }) //redirige vers ...
+         //          }
+
+         //         //  res.redirect('/')
+         //      }
+         //  )
+     }
+ }

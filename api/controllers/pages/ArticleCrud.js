@@ -39,7 +39,7 @@ module.exports = {
                 createDate: Date.now()
 
             })
-            res.redirect('back')
+            res.redirect('/')
 
         } else {
             res.redirect('/')
