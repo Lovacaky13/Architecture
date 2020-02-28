@@ -14,36 +14,36 @@ const UserSchema = new mongoose.Schema({
 
     lastname: {
         type: String,
-        required: [true, 'le nom est obligatoire']
+        // required: [true, 'le nom est obligatoire']
     },
 
     firstname: {
         type: String,
-        required: [true, 'le prénom est obligatoire']
+        // required: [true, 'le prénom est obligatoire']
     },
 
     adress: {
         type: String,
-        required: [true, 'l adresse est obligatoire']
+        // required: [true, 'l adresse est obligatoire']
     },
 
     zip: {
         type: Number,
-        required: [true, 'le code postal est obligatoire']
+        // required: [true, 'le code postal est obligatoire']
     },
     city: {
         type: String,
-        required: [true, 'la ville est obligatoire']
+        // required: [true, 'la ville est obligatoire']
     },
     
     email: {
         type: String,
-        required: [true, 'l email est obligatoire'],
+        // required: [true, 'l email est obligatoire'],
         unique: true   //l'email ne doit pas etre identique aux autres utilisateurs
     },
     password: {
         type: String,
-        required: [true, 'mot de passe est obligatoire']
+        // required: [true, 'mot de passe est obligatoire']
     },
 
     isAdmin: {

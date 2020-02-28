@@ -9,18 +9,30 @@
 
  module.exports = {
      userCreate: (req, res) => {
-         const coucou = 'coucou'
-
-         console.log('test register user')
-
-         console.log(req.body)
-
-         res.json({
-            cc: coucou
-         })
-
-
-         //  User.create(
+                    
+         User.create({
+            ...req.body,
+                   lastname: req.body.lastname,
+                   firstname: req.body.firstname,
+                   adress: req.body.adress,
+                   zip:req.body.zip,
+                   city:req.body.city,
+                   email:req.body.email,
+                   password: req.body.password,
+                   status:'user',
+                   isAdmin: false,
+                   isBan:false,
+                   isVerified:false,
+                                 
+                }, (err, user) => {
+                    if (!err) res.redirect('/')
+                    else console.log(err);
+                   
+                })
+        
+            }
+        }
+ //  User.create(
 
          //      ...req.body, (error, User) => {
 
@@ -39,5 +51,4 @@
          //         //  res.redirect('/')
          //      }
          //  )
-     }
- }
+

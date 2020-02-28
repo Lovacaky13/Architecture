@@ -6,14 +6,12 @@
  */
 
 
-
-
-
 const Article = require("../../db/models/Article"),
     path = require('path'),
     fs = require('fs')
 
 module.exports = {
+
 
 
     getArticle: async (req, res) => {
@@ -29,7 +27,7 @@ module.exports = {
 
         if (!req.file) {
             console.log('pas de req.file')
-            res.redirect('/')
+            res.redirect('back')
 
         } else if (req.file) {
             Article.create({                                  
@@ -39,10 +37,10 @@ module.exports = {
                 createDate: Date.now()
 
             })
-            res.redirect('/')
+            res.redirect('back')
 
         } else {
-            res.redirect('/')
+            res.redirect('back')
 
         }
     },
@@ -65,8 +63,8 @@ module.exports = {
                         title: req.body.title
                     },
                     (err) => {
-                        if (err) res.redirect('/')
-                        else res.redirect('/')
+                        if (err) res.redirect('back')
+                        else res.redirect('back')
                     })
             } else {
                 res.redirect('/')
@@ -85,7 +83,7 @@ module.exports = {
                                 console.log(err)
                             } else {
                                 console.log('File Deleted.')
-                                res.redirect('/')
+                                res.redirect('back')
                             }
                         })
                 })
@@ -110,7 +108,7 @@ module.exports = {
                                 console.log(err)
                             } else {
                                 console.log('File Deleted.')
-                                res.redirect('/')
+                                res.redirect('back')
                             }
                         })
                 } else {

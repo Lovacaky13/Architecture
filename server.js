@@ -7,6 +7,8 @@ const
     methodOverride = require('method-override'),
     router = express.Router(),
     mongoose = require('mongoose'),
+    session = require('express-session')
+    MongoStore = require('connect-mongo')(session),
     // connectFlash = require('connect-flash'), //customize le message d'erreur
     //keys = require('./config/keys'),
     port = 3000;
@@ -38,6 +40,22 @@ app.engine('hbs', hbs({
 
 var MomentHandler = require("handlebars.moment");
 MomentHandler.registerHelpers(Handlebars);
+
+app.use(session({
+
+    secret: 'securite',
+    //keys: [keys.session.cookieKeys],
+    name: 'biscuit',
+    saveUninitialized: true,
+    resave: false,
+    maxAge: 24 * 60 * 60 * 1000,
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
+
+}))
+
+
+
+
 
 // Connect-Flash (req.flash)
 // app.use(connectFlash())
