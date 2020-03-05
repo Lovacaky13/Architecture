@@ -11,7 +11,7 @@ const Article = require("../../db/models/Article")
 module.exports = {
     getArticle: async (req, res) => {
         const dbArticle = await Article.find({}); // Transforme ton Model (consctructeur) en Json
-        const affdbarticle =  dbArticle.reverse().slice(0, 2);
+        const affdbarticle =  dbArticle.reverse().slice(0, 3);
 
          res.render('index', {
             //layout: 'admin',
