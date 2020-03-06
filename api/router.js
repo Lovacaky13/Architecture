@@ -13,7 +13,10 @@ const   HomePage = require('./controllers/pages/HomePage'),
         ArticleCrud = require('./controllers/pages/ArticleCrud'),
         RegisterControllers = require('./controllers/RegisterControllers'),
         admin = require('./controllers/pages/Admin'),
-        LoginControllers = require('./controllers/LoginControllers')
+        LoginControllers = require('./controllers/LoginControllers'),
+        Profil = require('./controllers/pages/Profil'),
+        Contact = require('./controllers/pages/Contact'),
+        Agenda = require('./controllers/pages/Agenda')
 /*
  * Controllers
  *************/
@@ -21,6 +24,17 @@ const   HomePage = require('./controllers/pages/HomePage'),
 //  Controller Page
 router.route('/')
     .get(HomePage.getArticle)
+
+router.route('/Profil')
+    .get(Profil.get)  
+
+router.route('/Contact')
+    .get(Contact.get)  
+
+router.route('/Agenda')
+    .get(Agenda.get)  
+  
+
 
 // ******************* CRUD User s'identifier modifier supprimer utilisateur *********************
 router.route('/User')
